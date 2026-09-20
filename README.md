@@ -57,14 +57,16 @@ shutter-shock/
 
 1. Navigate to the `fuzz/` directory.
 2. Run target fuzz tests against local parser packages:
-   ```bash
-   go test -fuzz=FuzzImageParser -fuzztime=30s
-   ```
+
+```bash
+go test -fuzz=FuzzImageParser -fuzztime=30s
+```
 
 ### Execute Proof-of-Concept Scripts
 
 1. Start the target [garvageart/viz](https://github.com/garvageart/viz) test instance locally.
 2. Execute the desired PoC script against the test server:
-   ```bash
-   node pocs/test_eif_xss.js --target http://localhost:7770
-   ```
+
+```bash
+node pocs/test_eif_xss.js --target http://localhost:7770
+```
