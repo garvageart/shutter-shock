@@ -1,0 +1,14 @@
+{
+  "description": "Upload filter validation matrix for allowed and disallowed extensions and MIME types",
+  "cases": [
+    { "extension": "jpg", "mime": "image/jpeg", "expected": "allow" },
+    { "extension": "png", "mime": "image/png", "expected": "allow" },
+    { "extension": "webp", "mime": "image/webp", "expected": "allow" },
+    { "extension": "avif", "mime": "image/avif", "expected": "allow" },
+    { "extension": "svg", "mime": "image/svg+xml", "expected": "sanitize" },
+    { "extension": "php", "mime": "application/x-httpd-php", "expected": "block" },
+    { "extension": "exe", "mime": "application/x-msdownload", "expected": "block" },
+    { "extension": "sh", "mime": "text/x-shellscript", "expected": "block" },
+    { "extension": "html", "mime": "text/html", "expected": "block" }
+  ]
+}
