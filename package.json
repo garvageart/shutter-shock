@@ -1,0 +1,18 @@
+{
+  "name": "shutter-shock",
+  "version": "1.0.0",
+  "description": "Security Testing and Vulnerability Assessment Suite",
+  "type": "module",
+  "scripts": {
+    "audit:headers": "tsx scripts/check_security_headers.ts",
+    "test:bola": "tsx pocs/test_bola_authorization.ts",
+    "test:sessions": "tsx pocs/test_session_lifecycle.ts",
+    "test:rbac": "tsx pocs/test_role_escalation.ts",
+    "test:all": "tsx scripts/run_audit.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
