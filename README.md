@@ -65,8 +65,27 @@ go test -fuzz=FuzzImageParser -fuzztime=30s
 ### Execute Proof-of-Concept Scripts
 
 1. Start the target [garvageart/viz](https://github.com/garvageart/viz) test instance locally.
-2. Execute the desired PoC script against the test server:
+2. Install project dependencies:
 
 ```bash
-node pocs/test_eif_xss.js --target http://localhost:7770
+pnpm install
 ```
+
+3. Execute test scripts with the target URL:
+
+```bash
+# Run security headers audit
+pnpm audit:headers --url http://localhost:7770
+
+# Run authorization and session tests
+echo "$VIZ_API_KEY" | pnpm test:bola --url http://localhost:7770
+echo "$VIZ_API_KEY" | pnpm test:sessions --url http://localhost:7770
+echo "$VIZ_API_KEY" | pnpm test:rbac --url http://localhost:7770
+
+# Run dimension limit tests
+echo "$VIZ_API_KEY" | pnpm test:dimensions --url http://localhost:7770
+```
+
+## 6. Documented Findings
+
+- [`VIZ-SEC-001: Unbounded Image Dimension Processing and Truncated Stream Loop`](docs/FINDINGS-IMAGE-PROCESSING-LIMITS.md)
