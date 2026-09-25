@@ -4,8 +4,8 @@
  * to test resource boundary enforcement in image decoders.
  *
  * CLI Arguments:
- *   --width, -w   <number> : Custom image width in pixels (e.g. --width 12000)
- *   --height, -h  <number> : Custom image height in pixels (e.g. --height 12000)
+ *   --width, -W   <number> : Custom image width in pixels (e.g. --width 12000)
+ *   --height, -H  <number> : Custom image height in pixels (e.g. --height 12000)
  *   --output, -o  <string> : Output filename or path for the custom dimension fixture
  *   --all                  : Run and generate default baseline test cases (default if no custom dimensions given)
  */
@@ -90,13 +90,31 @@ export function generatePNG(width: number, height: number): Buffer {
 function parseCliArgs() {
   const { values } = parseArgs({
     options: {
-      width: { type: 'string', short: 'w' },
-      height: { type: 'string', short: 'h' },
+      width: { type: 'string', short: 'W' },
+      height: { type: 'string', short: 'H' },
       output: { type: 'string', short: 'o' },
       all: { type: 'boolean' },
+      help: { type: 'boolean', short: 'h' },
     },
     allowPositionals: false,
   });
+
+  if (values.help) {
+    console.log(`
+Dimension Fixture Generator
+
+Usage:
+  pnpm generate:dimensions [options]
+
+Options:
+  -W, --width  <number>  Custom image width in pixels
+  -H, --height <number>  Custom image height in pixels
+  -o, --output <path>    Output file path
+  --all                  Generate all baseline fixtures
+  -h, --help             Show this help menu
+`);
+    process.exit(0);
+  }
 
   const customWidth = values.width ? Number(values.width) : undefined;
   const customHeight = values.height ? Number(values.height) : undefined;

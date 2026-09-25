@@ -8,6 +8,8 @@
     "test:bola": "tsx pocs/test_bola_authorization.ts",
     "test:sessions": "tsx pocs/test_session_lifecycle.ts",
     "test:rbac": "tsx pocs/test_role_escalation.ts",
+    "test:dimensions": "tsx pocs/test_upload_dimensions.ts",
+    "generate:dimensions": "tsx payloads/dimensions/generate_dimension_fixtures.ts",
     "test:all": "tsx scripts/run_audit.ts"
   },
   "devDependencies": {
